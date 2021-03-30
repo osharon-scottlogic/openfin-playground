@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Panel</title>
+	<link rel="stylesheet" type="text/css" href="../styles/openfin-default.css">
+	<style>
+		html {
+			font-size: 62.5%;
+			height: 100%;
+		}
+		body {
+			background-color: var(--of-default-grey-dark);
+			color: var(--of-default-charcoal-light);
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 1.4rem;
+			margin: 0;
+			padding: 1rem;
+		}
+		h1 {
+			margin-top: 0;
+		}
+		ol {
+			padding-left: 2rem;
+		}
+		li {
+			cursor: pointer;
+			margin: 0.5rem 0;
+		}
+	</style>
+</head>
+<body>
+	<h1>TODO</h1>
+	<ol>
+		<li>
+			<details>
+				<summary>Q: Scroll main window, panels should move alongside and mask beyond the window edges</summary>
+				<div>A: panels are fixed to their position and ignore scroll; window.onScroll event isn't triggered</div>
+			</details>
+		</li>
+		<li><details>
+			<summary>Q: Refresh number of columns on resize</summary>
+			<div>A: Can be done, I can't prevent the user from breaking the column structure; so the best I can do is reconstruct the components into a new layout for every resize</div>
+		</details></li>
+		<li>
+			<details>
+				<summary>Q: Set Views (panels) to a fixed height</summary>
+				<div>A: completely ignored
+			</details>
+		</li>
+		<li>
+			<details>
+				<summary>Q: Does resize forces the panel to reload?</summary>
+				<div>A: No</div>
+			</details>
+		</li>
+	</ol>
+</body>
+</html>

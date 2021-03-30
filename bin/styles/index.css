@@ -1,0 +1,90 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.2rem;
+}
+
+side-bar {
+  background-color: var(--frame-background-color);
+  --frame-background-color: var(--of-default-black);
+  color: var(--of-default-white);
+  padding: 1rem;
+}
+
+top-bar {
+  color: var(--body-font-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+top-bar button {
+  background-color: var(--tab-background-active-color);
+  background-size: contain;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  height: 2.4rem;
+  margin-left: 0.1rem;
+  width: 2.4rem;
+}
+top-bar button:hover {
+  background-color: var(--top-bar-button-hover-color);
+}
+top-bar button:active {
+  background-color: var(--top-bar-button-active-color);
+}
+
+/*.btn_toggleTheme { background-image: var(--close-button-url); }*/
+.btn_minWindow {
+  background-image: var(--minimize-button-url);
+}
+
+.btn_maxWindow {
+  background-image: var(--expand-button-url);
+}
+
+.btn_closeWindow {
+  background-color: var(--top-bar-close-button-color);
+  background-image: var(--close-button-url);
+}
+.btn_closeWindow:hover, .btn_closeWindow:active {
+  background-color: var(--top-bar-close-button-active-color);
+}
+
+body {
+  --frame-background-color: var(--of-default-white);
+  --body-font-color: --of-default-black;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  grid-template-rows: 3rem 1fr;
+}
+
+side-bar {
+  grid-area: 1/1/3/2;
+}
+
+top-bar {
+  grid-area: 1/2/2/3;
+}
+
+main {
+  grid-area: 2/2/3/3;
+  overflow: auto;
+  position: relative;
+}
+
+.force-scroll {
+  position: absolute;
+  background: blue;
+  z-index: 1;
+  color: white;
+  top: 90%;
+  left: 10%;
+  height: 20%;
+  width: 20rem;
+  padding: 2rem;
+}
+
+/*# sourceMappingURL=index.css.map */

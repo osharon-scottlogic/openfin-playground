@@ -1,0 +1,37 @@
+top-bar {
+	color: var(--body-font-color);
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem;
+
+	button {
+		background-color: var(--tab-background-active-color);
+		background-size: contain;
+		border: 0;
+		border-radius: 0;
+		cursor: pointer;
+		height: 2.4rem;
+		margin-left: 0.1rem;
+		width: 2.4rem;
+
+		&:hover {
+			background-color: var(--top-bar-button-hover-color);
+		}
+
+		&:active {
+			background-color: var(--top-bar-button-active-color);
+		}
+	}
+}
+
+/*.btn_toggleTheme { background-image: var(--close-button-url); }*/
+.btn_minWindow { background-image: var(--minimize-button-url); }
+.btn_maxWindow { background-image: var(--expand-button-url); }
+.btn_closeWindow { 
+	background-color: var(--top-bar-close-button-color);
+	background-image: var(--close-button-url);
+
+	&:hover, &:active {
+		background-color: var(--top-bar-close-button-active-color);
+	}
+}

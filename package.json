@@ -1,0 +1,24 @@
+{
+  "name": "openfin-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsc  --watch",
+    "style": "sass --watch src/scss:bin/styles",
+    "test": "mocha bin/tests/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.14.36",
+    "@types/openfin": "latest",
+    "chai": "^4.3.4",
+    "hadouken-js-adapter": "latest",
+    "http-server": "^0.12.3",
+    "mocha": "^8.3.2",
+    "puppeteer-core": "^8.0.0",
+    "sass": "^1.32.8",
+    "typescript": "^4.2.3"
+  }
+}
