@@ -3,17 +3,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="./styles/index.css">
+        <script src="/vendor/openfin-layouts.js"></script>
         <script type="module" src="/ui-elements/top-bar.js"></script>
         <script type="module" src="/ui-elements/side-bar.js"></script>
         <script type="module" src="/index.js"></script>
         <title>OpenFin Playground</title>
     </head>
-    <body id="of-frame-main">
+    <body>
         <side-bar></side-bar>
         <top-bar></top-bar>
         <main>
-            <div id="layout-container"></div>
-            <div class="force-scroll">Forces-scroll</div>
+            <section id="of-frame-main">
+                <div id="layout-container"></div>
+            </section>
         </main>
     </body>
 </html>

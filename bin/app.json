@@ -11,25 +11,23 @@
 		"defaultWindowOptions": {
 			"url": "http://localhost:5555/index.html",
 			"contextMenu": true,
-			"defaultWidth": 600,
+			"defaultWidth": 800,
 			"defaultHeight": 600,
 			"defaultLeft": 10,
 			"defaultTop": 10,
-			"saveWindowState": true,
+			"saveWindowState": false,
 			"backgroundThrottling": true,
-			"minHeight": 445,
-			"minWidth": 354,
-			"experimental": {
-				"analytics": true
-			}
+			"minHeight": 640,
+			"minWidth": 480
 		}
 	},
+	"services": [
+		{"name": "layouts"}
+	],
 	"snapshot": {
 		"windows": [
 			{
 				"layout": {
-					"showCloseIcon": true,
-					"showMaximizeIcon": true,
 					"content": [
 						{
 							"type": "row",
@@ -37,7 +35,6 @@
 							"content": [
 								{
 									"type": "column",
-									"width":200,
 									"content": [
 										{
 											"type": "component",
@@ -45,8 +42,7 @@
 											"componentState": {
 												"processAffinity": "ps_1",
 												"url": "http://localhost:5555/panels/intro.html"
-											},
-											"maxHeight": 200
+											}
 										},
 										{
 											"type": "component",
@@ -54,14 +50,12 @@
 											"componentState": {
 												"processAffinity": "ps_1",
 												"url": "http://localhost:5555/panels/index.html"
-											},
-											"minHeight": 100
+											}
 										}
 									]
 								},
 								{
 									"type": "column",
-									"height":400,
 									"content": [
 										{
 											"type": "component",

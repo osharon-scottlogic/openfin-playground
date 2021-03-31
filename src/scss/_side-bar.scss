@@ -3,4 +3,9 @@ side-bar {
 	--frame-background-color: var(--of-default-black);
 	color: var(--of-default-white);
 	padding: 1rem;
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
 }

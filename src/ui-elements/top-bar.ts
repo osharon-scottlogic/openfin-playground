@@ -79,7 +79,7 @@ class TopBar extends HTMLElement {
                     <button hidden class="btn_toggleTheme" title="Toggle Theme" id="theme-button" @click=${this.toggleTheme}></button>
                     <button class="btn_minWindow"title="Minimize Window" @click=${() => finMe.minimize().catch(console.error)}><i class="fas fa-window-minimize"></i></button>
                     <button class="btn_maxWindow" title="Maximize Window" @click=${() => this.maxOrRestore().catch(console.error)}><i class="fas fa-window-maximize"></i></button>
-                    <button class="btn_closeWindow"title="Close Window" @click=${() => finMe.close().catch(console.error)}><i class="fas fa-times"></i></button>
+                    <button class="btn_closeWindow"title="Close Window" @click=${() => this.dispatchEvent(new Event('close'))}><i class="fas fa-times"></i></button>
                 </div>`;
         return render(titleBar, this);
     }

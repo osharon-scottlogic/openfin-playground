@@ -35,3 +35,17 @@ top-bar {
 		background-color: var(--top-bar-close-button-active-color);
 	}
 }
+
+body[single-tab-window="true"] top-bar {
+	height: 1.6rem;
+	padding: 0.1rem;
+
+	.title-bar-draggable {
+		margin: 0.2rem;
+	}
+	
+	button {
+		height: 1.5rem;
+		width: 1.5rem;
+	}
+}
