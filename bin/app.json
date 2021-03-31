@@ -17,8 +17,8 @@
 			"defaultTop": 10,
 			"saveWindowState": false,
 			"backgroundThrottling": true,
-			"minHeight": 640,
-			"minWidth": 480
+			"minHeight": 480,
+			"minWidth": 640
 		}
 	},
 	"services": [

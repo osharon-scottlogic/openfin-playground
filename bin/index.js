@@ -7,12 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { undockWindow, addEventListener } from './layout-service/snapanddock.js';
 export const CONTAINER_ID = 'layout-container';
 const HEADER_MIN_HEIGHT = 4;
 const HEADER_DEFAULT_HEIGHT = 25;
 let isMainWindow = false;
 window.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     const layout = yield fin.Platform.Layout.init({ containerId: CONTAINER_ID });
     isMainWindow = yield getIsMainWindow();
     if (isMainWindow) {
@@ -21,7 +21,11 @@ window.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, void
     else {
         initSecondaryWindow(layout);
     }
-    (_a = document.querySelector('top-bar')) === null || _a === void 0 ? void 0 : _a.addEventListener('close', closeWindow);
+    const topBarElm = document.querySelector('top-bar');
+    if (topBarElm) {
+        topBarElm.addEventListener('close', closeWindow);
+        topBarElm.addEventListener('undock', () => undockWindow(fin.Window.getCurrentSync().identity));
+    }
 }));
 function initMainWindow() {
     document.body.setAttribute('data-main-window', 'true');
@@ -34,6 +38,8 @@ function initSecondaryWindow(layout) {
         finWindow.on('view-attached', handleLayoutUpdate);
         finWindow.on('view-created', handleLayoutUpdate);
         finWindow.on('view-destroyed', handleLayoutUpdate);
+        addEventListener('window-docked', () => document.body.setAttribute('data-is-docked', 'true'));
+        addEventListener('window-undocked', () => document.body.removeAttribute('data-is-docked'));
         const config = Object.assign({}, yield layout.getConfig());
         if (hasSingleStackWithSingleTab(config)) {
             setLayoutToSingleTab(layout, config);

@@ -1,4 +1,5 @@
 import { Layout } from "openfin/_v2/api/platform/layout";
+import { undockWindow, addEventListener, WindowDockedEvent} from './layout-service/snapanddock.js';
 
 export const CONTAINER_ID = 'layout-container';
 
@@ -17,7 +18,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 		initSecondaryWindow(layout);
 	}
 
-	document.querySelector('top-bar')?.addEventListener('close', closeWindow);
+	const topBarElm = document.querySelector('top-bar');
+	if (topBarElm) {
+		topBarElm.addEventListener('close', closeWindow);
+		topBarElm.addEventListener('undock', ()=>undockWindow(fin.Window.getCurrentSync().identity));
+	}
 });
 
 function initMainWindow() {
@@ -31,6 +36,8 @@ async function initSecondaryWindow(layout:Layout) {
 	finWindow.on('view-attached', handleLayoutUpdate);
 	finWindow.on('view-created', handleLayoutUpdate);
 	finWindow.on('view-destroyed', handleLayoutUpdate);
+	addEventListener('window-docked', () => document.body.setAttribute('data-is-docked', 'true'));
+	addEventListener('window-undocked', () => document.body.removeAttribute('data-is-docked'));
 
 	const config = { ... await layout.getConfig() };
 	if (hasSingleStackWithSingleTab(config)) {

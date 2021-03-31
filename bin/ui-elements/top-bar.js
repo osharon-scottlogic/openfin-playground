@@ -97,6 +97,7 @@ class TopBar extends HTMLElement {
                         <button title="Toggle Layout Lock" class="button" @click=${this.toggleLockedLayout.bind(this)}><i class="fas fa-lock"></i></button>
                     </div>
                     <button hidden class="btn_toggleTheme" title="Toggle Theme" id="theme-button" @click=${this.toggleTheme}></button>
+                    <button class="btn_undockWindow"title="Undock" @click=${() => this.dispatchEvent(new Event('undock'))}><i class="fas fa-window-minimize"></i></button>
                     <button class="btn_minWindow"title="Minimize Window" @click=${() => finMe.minimize().catch(console.error)}><i class="fas fa-window-minimize"></i></button>
                     <button class="btn_maxWindow" title="Maximize Window" @click=${() => this.maxOrRestore().catch(console.error)}><i class="fas fa-window-maximize"></i></button>
                     <button class="btn_closeWindow"title="Close Window" @click=${() => this.dispatchEvent(new Event('close'))}><i class="fas fa-times"></i></button>

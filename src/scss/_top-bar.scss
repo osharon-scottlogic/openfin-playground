@@ -49,3 +49,7 @@ body[single-tab-window="true"] top-bar {
 		width: 1.5rem;
 	}
 }
+
+body:not([data-is-docked="true"]) top-bar .btn_undockWindow {
+	display: none;
+}

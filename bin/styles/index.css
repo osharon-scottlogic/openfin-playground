@@ -69,6 +69,10 @@ body[single-tab-window=true] top-bar button {
   width: 1.5rem;
 }
 
+body:not([data-is-docked=true]) top-bar .btn_undockWindow {
+  display: none;
+}
+
 body {
   --frame-background-color: var(--of-default-white);
   --body-font-color: --of-default-black;
