@@ -22,9 +22,7 @@ const navItems = [
         title: 'Blotters',
         icon: 'fa-chart-bar',
         items: [
-            { title: 'Trade finder',
-                settings,
-                content: [
+            { title: 'Trade finder', settings: Object.assign(Object.assign({}, settings), { hasHeaders: false }), content: [
                     {
                         type: "component",
                         componentName: "view",
@@ -36,17 +34,31 @@ const navItems = [
                 ] },
             { title: 'Positions & trades', settings, content: [
                     {
-                        type: "component",
-                        componentName: "view",
-                        componentState: {
-                            processAffinity: "ps_1",
-                            url: "http://localhost:5555/panels/preview-snapshot.html"
-                        }
+                        type: 'stack',
+                        content: [
+                            {
+                                type: "component",
+                                componentName: "view",
+                                componentState: {
+                                    processAffinity: "ps_1",
+                                    url: "http://localhost:5555/panels/preview-snapshot.html"
+                                }
+                            },
+                            {
+                                type: "component",
+                                componentName: "view",
+                                componentState: {
+                                    processAffinity: "ps_1",
+                                    url: "http://localhost:5555/panels/trade-finder.html"
+                                }
+                            }
+                        ]
                     }
                 ] },
             { title: 'Orders', badge: 3, settings, content: [] },
         ]
-    }, {
+    },
+    {
         title: 'Loaders',
         icon: 'fa-route',
         items: [

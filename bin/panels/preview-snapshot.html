@@ -38,6 +38,8 @@
 				//child.width && (childElm.style.width = `${child.width/20}%`);
 				break;
 				case 'stack':
+					childElm.classList.add('stack');
+					break;
 				default:
 					childElm.classList.add('panel');
 			}
@@ -86,6 +88,39 @@
 			flex: 1 1 auto;
 			flex-direction: column;
 			height: 100%;
+		}
+
+		.stack {
+			background: white;
+			border: 1px solid red;
+			flex: 1 1 auto;		
+			height: 100%;
+    	box-sizing: border-box;
+			position: relative;
+			display: flex;
+			overflow: hidden;
+		}
+
+		.stack > .panel {
+			border: none;
+			height: 100%;
+			width: 2rem;
+		}
+
+		.stack > .panel:after {
+			content: "";
+			border-top: 1px solid red;
+			position: absolute;
+			display: block;
+			height: calc(100% - 0.5rem);
+			top: 0.5rem;
+			width: 100%;
+			left: 0;
+			background: white;
+		}
+
+		.stack > .panel:not(:first-child) {
+			border-left: 1px solid red;
 		}
 
 		.panel {

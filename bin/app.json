@@ -28,6 +28,11 @@
 		"windows": [
 			{
 				"layout": {
+					"settings": {
+						"showPopoutIcon": true,
+						"showMaximiseIcon": true,
+						"showCloseIcon": true
+					},
 					"content": [
 						{
 							"type": "row",

@@ -23,7 +23,7 @@ const navItems:NavItem[] = [
 		icon: 'fa-chart-bar',
 		items: [
 			{ title: 'Trade finder', 
-				settings,
+				settings: {...settings , hasHeaders: false },
 				content: [
 				{
 					type: "component",
@@ -36,12 +36,25 @@ const navItems:NavItem[] = [
 			]},
 			{ title: 'Positions & trades', settings, content: [
 				{
-					type: "component",
-					componentName: "view",
-					componentState: {
-						processAffinity: "ps_1",
-						url: "http://localhost:5555/panels/preview-snapshot.html"
-					}
+					type: 'stack',
+					content: [
+						{
+							type: "component",
+							componentName: "view",
+							componentState: {
+								processAffinity: "ps_1",
+								url: "http://localhost:5555/panels/preview-snapshot.html"
+							}
+						},
+						{
+							type: "component",
+							componentName: "view",
+							componentState: {
+								processAffinity: "ps_1",
+								url: "http://localhost:5555/panels/trade-finder.html"
+							}
+						}
+					]
 				}
 			]},
 			{ title: 'Orders', badge: 3, settings, content: []},
