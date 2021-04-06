@@ -8,6 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { undockWindow, addEventListener } from './layout-service/snapanddock.js';
+import { setLayout, setSnapshot } from "./layout-utils.js";
+import { storeLayout, storeSnapshot } from './template-store.js';
 export const CONTAINER_ID = 'layout-container';
 const HEADER_MIN_HEIGHT = 4;
 const HEADER_DEFAULT_HEIGHT = 25;
@@ -17,16 +19,42 @@ window.addEventListener('DOMContentLoaded', () => __awaiter(void 0, void 0, void
     isMainWindow = yield getIsMainWindow();
     if (isMainWindow) {
         initMainWindow();
+        initSideBar();
     }
     else {
         initSecondaryWindow(layout);
     }
+    initTopBar();
+}));
+function initTopBar() {
     const topBarElm = document.querySelector('top-bar');
     if (topBarElm) {
         topBarElm.addEventListener('close', closeWindow);
         topBarElm.addEventListener('undock', () => undockWindow(fin.Window.getCurrentSync().identity));
     }
-}));
+}
+function initSideBar() {
+    const sideBarElm = document.querySelector('side-bar');
+    if (sideBarElm) {
+        sideBarElm.addEventListener('toggle-panels-request', (evt) => toggleLayoutContainer(evt.detail.show));
+        sideBarElm.addEventListener('change-layout-request', (evt) => setLayout(evt.detail));
+        sideBarElm.addEventListener('change-snapshot-request', (evt) => setSnapshot(evt.detail));
+        sideBarElm.addEventListener('save-new-layout-request', (evt) => __awaiter(this, void 0, void 0, function* () { yield storeLayout(evt.detail); sideBarElm.render(); }));
+        sideBarElm.addEventListener('save-new-snapshot-request', (evt) => __awaiter(this, void 0, void 0, function* () { yield storeSnapshot(evt.detail); sideBarElm.render(); }));
+    }
+}
+function toggleLayoutContainer(show) {
+    const mainElm = document.querySelector('main');
+    if (!mainElm) {
+        return;
+    }
+    if (show) {
+        mainElm.removeAttribute('hidden');
+    }
+    else {
+        mainElm.setAttribute('hidden', 'true');
+    }
+}
 function initMainWindow() {
     document.body.setAttribute('data-main-window', 'true');
     fin.Window.getCurrentSync().on('close-requested', closeWindow);
@@ -84,10 +112,12 @@ function setWindowTitle(newTitle) {
     const titleElm = document.getElementById('title');
     titleElm && (titleElm.innerHTML = newTitle);
 }
+// Sadly, the only way I could find what is the main window is by checking its position on the screen
 function getIsMainWindow() {
     return __awaiter(this, void 0, void 0, function* () {
         const snapshot = yield fin.Platform.getCurrentSync().getSnapshot();
-        return (snapshot.windows.length === 1);
+        const { top, left } = yield fin.Window.getCurrentSync().getBounds();
+        return (top === snapshot.windows[0].y && left === snapshot.windows[0].x);
     });
 }
 function closeWindow() {

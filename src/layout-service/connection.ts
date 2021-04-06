@@ -11,7 +11,7 @@
  * These types are a part of the client, but are not required by applications wishing to interact with the service.
  * This file is excluded from the public-facing TypeScript documentation.
  */
-import {EventEmitter} from 'events';
+import {EventEmitter} from './events.js';
 
 import {SnapAndDockEvent} from './snapanddock.js';
 import {TabbingEvent} from './tabbing.js';
@@ -27,7 +27,8 @@ import {ChannelClient} from './types/api/interappbus/channel/client.js';
  *
  * Webpack replaces any instances of this constant with a hard-coded string at build time.
  */
-declare const PACKAGE_VERSION: string;
+// declare const PACKAGE_VERSION: string;
+const PACKAGE_VERSION = '1.1.1';
 
 /**
  * Defines all events that are fired by the service
@@ -53,7 +54,7 @@ export function getServicePromise(): Promise<ChannelClient> {
         channelPromise = typeof fin === 'undefined' ?
             Promise.reject(new Error('fin is not defined. The openfin-layouts module is only intended for use in an OpenFin application.')) :
             fin.InterApplicationBus.Channel
-                .connect(SERVICE_CHANNEL, {payload: {version: PACKAGE_VERSION}})
+                .connect(SERVICE_CHANNEL, {payload: {version: PACKAGE_VERSION || '0.0.0'}})
                 //@ts-ignore
                 .then((channel: ChannelClient) => {
                     // Register service listeners

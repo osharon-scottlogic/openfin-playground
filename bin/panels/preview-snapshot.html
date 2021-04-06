@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Panel</title>
+	<script>
+		async function preview() {
+			while(document.body.children.length) {
+				document.body.children.item(0).remove();
+			}
+			if (fin) {
+				const snapshot = await fin.Platform.getCurrentSync().getSnapshot();
+				snapshot.windows.forEach(win => {
+					const winElm = document.createElement('article');
+					winElm.style.backgroundColor = winElm.backgroundColor;
+					winElm.style.position = 'absolute';
+					winElm.style.left = `${win.x/20}%`;
+					winElm.style.top = `${win.y/20}%`;
+					winElm.style.height = `${win.height/20}%`;
+					winElm.style.width = `${win.width/20}%`;
+					document.body.appendChild(winElm);
+					win.layout.content.forEach(elm => addChild(winElm, elm))
+					console.log(win);
+				})
+			}
+ 		}
+
+		function addChild(parent,child) {
+			const childElm = document.createElement('div');
+
+			switch(child.type) {
+				case 'row':
+				case 'column':
+				childElm.classList.add(child.type);
+				//child.height && (childElm.style.height = `${child.height/20}%`);
+				//child.width && (childElm.style.width = `${child.width/20}%`);
+				break;
+				case 'stack':
+				default:
+					childElm.classList.add('panel');
+			}
+			child.content && child.content.forEach(elm => addChild(childElm, elm));
+			parent.appendChild(childElm);
+		}
+
+		window.addEventListener('load', () => {
+			document.body.addEventListener('click', preview);
+			preview();
+		});
+		
+	</script>
+	<link rel="stylesheet" type="text/css" href="../styles/openfin-default.css">
+	<style>
+		html {
+			font-size: 62.5%;
+			height: 100%;
+		}
+		body {
+			align-items: center;
+			background-color: var(--of-default-grey-dark);
+			color: var(--of-default-charcoal-light);
+			display: flex;
+			justify-content: center;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 1.4rem;
+			height: 100%;
+			margin: 0;
+			position: relative;
+		}
+		article {
+			border:1px solid var(--of-default-charcoal-light);
+		}
+
+		.row {
+			align-items: stretch;
+			display: flex;
+			flex-direction: row;
+			height: 100%;
+		}
+
+		.column {
+			align-items: stretch;
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			height: 100%;
+		}
+
+		.panel {
+			background: white;
+			border: 1px solid red;
+			flex: 1 1 auto;		
+			height: 100%;
+    	box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+
+</body>
+</html>

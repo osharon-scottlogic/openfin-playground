@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trade Finder</title>
+	<link rel="stylesheet" type="text/css" href="../styles/openfin-default.css">
+	<style>
+		html {
+			font-size: 62.5%;
+			height: 100%;
+		}
+		body {
+			align-items: flex-start;
+			background-color: var(--of-default-grey-dark);
+			color: var(--of-default-charcoal-light);
+			display: flex;
+			justify-content: center;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 1.4rem;
+			height: 100%;
+			margin: 0;
+		}
+
+		th,td {
+			font-size: 1.2rem;
+		}
+		
+	</style>
+	<script type="module">
+		import { html, render } from 'https://unpkg.com/lit-html@1.0.0/lit-html.js';
+
+		function pick(options) {
+			return options[Math.floor(Math.random()*options.length)];
+		}
+		window.addEventListener('load', () => {
+			const tBodyElm = document.querySelector('tbody');
+			for (let i=0; i < 100; i++) {
+				const row = html`<tr>
+					<td>x</td>
+					<td>${Math.floor(Math.random()*100000)}</td>
+					<td>${pick(['Active', 'Archive','Draft', 'Paused'])}</td>
+					<td>${pick(['USD', 'GBP','EUR', 'ILS','CAD','SKA'])}</td>
+					<td>${pick(['Whisper','Brute'])}</td>
+					<td>&nbsp;</td>
+					<td>${pick(['Buy','Sell'])}</td>
+					<td><progress value="${Math.floor(Math.random()*100)}" max="100"></progress></td>
+					<td>${Math.floor(Math.random()*1000)/100}</td>
+					<td>${Math.floor(Math.random()*100000)}.00</td>
+					<td>${Math.floor(Math.random()*100000)}.00</td>
+					<td>${Math.floor(Math.random()*1000)/100}</td>
+					<td>${Math.floor(Math.random()*1000)/100}</td>
+					<th>&nbsp;</th>
+				</tr>`;
+				const rowElm = document.createElement('tr');
+				render(row, rowElm);
+				console.log(rowElm);
+				tBodyElm.appendChild(rowElm.childNodes[1]);
+			}
+		});
+	</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th>Order ID</th>
+				<th>State</th>
+				<th>Ccy pair</th>
+				<th>Stategy</th>
+				<th>Type</th>
+				<th>Side</th>
+				<th>Exec Status</th>
+				<th>Rate</th>
+				<th>Order Amt</th>
+				<th>Fill Amt</th>
+				<th>Avg Fill Rate</th>
+				<th>No Worse Than</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</body>
+</html>

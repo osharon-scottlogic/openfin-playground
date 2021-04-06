@@ -22,10 +22,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { EventEmitter } from './events.js';
 import { SERVICE_CHANNEL } from './internal.js';
 /**
+ * The version of the NPM package.
+ *
+ * Webpack replaces any instances of this constant with a hard-coded string at build time.
+ */
+// declare const PACKAGE_VERSION: string;
+const PACKAGE_VERSION = '1.1.1';
+/**
  * The event emitter to emit events received from the service.  All addEventListeners will tap into this.
  */
 export const eventEmitter = new EventEmitter();
-export const PACKAGE_VERSION = '0.0.0';
 /**
  * Promise to the channel object that allows us to connect to the client
  */
@@ -38,7 +44,7 @@ export function getServicePromise() {
         channelPromise = typeof fin === 'undefined' ?
             Promise.reject(new Error('fin is not defined. The openfin-layouts module is only intended for use in an OpenFin application.')) :
             fin.InterApplicationBus.Channel
-                .connect(SERVICE_CHANNEL, { payload: { version: PACKAGE_VERSION } })
+                .connect(SERVICE_CHANNEL, { payload: { version: PACKAGE_VERSION || '0.0.0' } })
                 //@ts-ignore
                 .then((channel) => {
                 // Register service listeners

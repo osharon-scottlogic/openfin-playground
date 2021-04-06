@@ -7,6 +7,7 @@ top-bar {
 	button {
 		background-color: var(--tab-background-active-color);
 		background-size: contain;
+		color: var(	--tab-font-color);
 		border: 0;
 		border-radius: 0;
 		cursor: pointer;
@@ -24,12 +25,12 @@ top-bar {
 	}
 }
 
-/*.btn_toggleTheme { background-image: var(--close-button-url); }*/
+/*.btn_toggleTheme { background-image: var(--close-button-url); }
 .btn_minWindow { background-image: var(--minimize-button-url); }
-.btn_maxWindow { background-image: var(--expand-button-url); }
+.btn_maxWindow { background-image: var(--expand-button-url); }*/
 .btn_closeWindow { 
 	background-color: var(--top-bar-close-button-color);
-	background-image: var(--close-button-url);
+	//background-image: var(--close-button-url);
 
 	&:hover, &:active {
 		background-color: var(--top-bar-close-button-active-color);

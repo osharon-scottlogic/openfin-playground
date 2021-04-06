@@ -1,5 +1,5 @@
-/// <reference types="node" />
-import { EventEmitter } from 'events';
+import {EventEmitter} from '../../../events.js';
+
 export declare class EmitterMap {
     private storage;
     constructor();

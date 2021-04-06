@@ -1,10 +1,11 @@
 /// <reference types="node" />
 import { Wire, WireConstructor, READY_STATE, ExistingConnectConfig, ConnectConfig, InternalConnectConfig } from './wire';
-import { Identity } from '../identity';
+import { Identity } from '../identity.js'
+/// <reference types="node" />
 import { EventEmitter } from 'events';
-import { Environment } from '../environment/environment';
-import { RuntimeEvent } from '../api/events/base';
-import { EventAggregator } from '../api/events/eventAggregator';
+import { Environment } from '../environment/environment.js';
+import { RuntimeEvent } from '../api/events/base.js';
+import { EventAggregator } from '../api/events/eventAggregator.js';
 export declare type MessageHandler = (data: any) => boolean;
 declare class Transport extends EventEmitter {
     protected wireListeners: Map<number, {

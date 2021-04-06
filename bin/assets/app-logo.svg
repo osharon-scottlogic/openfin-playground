@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 24.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 559528.96 152529.92"
+   role="img"
+   aria-labelledby="title"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="openfin.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>OpenFin Brand</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     id="namedview12"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="1.28"
+     inkscape:cx="505.00555"
+     inkscape:cy="191.02997"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g8" />
+  <title
+     id="title2">OpenFin Brand</title>
+  <g
+     id="g8"
+     transform="translate(0,558436.13)">
+    <path
+       d="m 519819.69,-542247.31 a 89452.103,89452.103 0 0 0 -10287.01,-8837.87 l -1341.78,-930.31 c -769.29,-536.71 -1520.69,-1091.31 -2307.85,-1610.11 -787.19,-518.84 -1699.6,-1073.42 -2540.45,-1592.26 l -1180.78,-733.49 c -1055.52,-626.19 -2128.94,-1216.57 -3202.39,-1789.06 l -626.15,-339.91 a 88736.487,88736.487 0 0 0 -41147.95,-10161.78 88933.279,88933.279 0 0 1 -88861.74,-89022.72 88772.266,88772.266 0 1 0 -88915.37,88611.26 88933.279,88933.279 0 0 1 88861.69,89022.71 88933.279,88933.279 0 0 1 -89022.71,88861.74 88772.266,88772.266 0 0 1 -88843.84,-88861.74 88772.266,88772.266 0 1 0 -88772.26,88772.3 88772.266,88772.266 0 0 1 88772.26,88772.26 88942.23,88942.23 0 0 0 177884.46,0 88772.266,88772.266 0 0 1 88772.26,-88772.26 88664.924,88664.924 0 0 0 45065.98,-12272.84 c 1180.76,-697.73 2343.64,-1431.25 3578.08,-2182.63 l 250.46,-161.02 c 1073.44,-715.62 2146.86,-1467.02 3184.5,-2218.42 l 465.14,-322.03 c 930.31,-679.84 1789.05,-1413.33 2773.02,-2146.86 l 787.17,-608.24 c 858.76,-697.73 1681.7,-1431.25 2522.57,-2164.75 l 912.4,-787.18 q 1610.14,-1449.13 3166.61,-3005.59 l 161.02,-143.14 a 89165.857,89165.857 0 0 0 10376.42,-12523.28 q 1001.88,-1449.12 1932.19,-2934.04 a 88754.375,88754.375 0 0 0 -12415.95,-109918.74 z"
+       class="logo-openfin-shape"
+       id="path6"
+       inkscape:connector-curvature="0"
+       style="stroke-width:1789.04187012;fill:#504cff;fill-opacity:1" />
+  </g>
+</svg>

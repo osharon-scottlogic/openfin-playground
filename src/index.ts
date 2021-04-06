@@ -1,6 +1,8 @@
 import { Layout } from "openfin/_v2/api/platform/layout";
-import { undockWindow, addEventListener, WindowDockedEvent} from './layout-service/snapanddock.js';
-
+import { undockWindow, addEventListener } from './layout-service/snapanddock.js';
+import { setLayout, setSnapshot } from "./layout-utils.js";
+import { storeLayout, storeSnapshot} from './template-store.js';
+import { SideBar } from './ui-elements/side-bar.js';
 export const CONTAINER_ID = 'layout-container';
 
 const HEADER_MIN_HEIGHT = 4;
@@ -14,16 +16,66 @@ window.addEventListener('DOMContentLoaded', async () => {
 	isMainWindow = await getIsMainWindow();
 	if (isMainWindow) {
 		initMainWindow();
+		initSideBar();
 	} else {
 		initSecondaryWindow(layout);
 	}
 
+	initTopBar();
+});
+
+function initTopBar() {
 	const topBarElm = document.querySelector('top-bar');
 	if (topBarElm) {
 		topBarElm.addEventListener('close', closeWindow);
 		topBarElm.addEventListener('undock', ()=>undockWindow(fin.Window.getCurrentSync().identity));
 	}
-});
+}
+
+function initSideBar() {
+	const sideBarElm = document.querySelector('side-bar');
+
+	if (sideBarElm) {
+		sideBarElm.addEventListener(
+			'toggle-panels-request', 
+			(evt:Event)=> toggleLayoutContainer((evt as CustomEvent).detail.show)
+		);
+
+		sideBarElm.addEventListener(
+			'change-layout-request', 
+			(evt:Event)=> setLayout((evt as CustomEvent).detail)
+		);
+
+		sideBarElm.addEventListener(
+			'change-snapshot-request', 
+			(evt:Event)=> setSnapshot((evt as CustomEvent).detail)
+		);
+
+		sideBarElm.addEventListener(
+			'save-new-layout-request',
+			async (evt:Event) => { await storeLayout((evt as CustomEvent).detail); (sideBarElm as SideBar).render() }
+		);
+
+		sideBarElm.addEventListener(
+			'save-new-snapshot-request',
+			async (evt:Event) => { await storeSnapshot((evt as CustomEvent).detail); (sideBarElm as SideBar).render() }
+		);
+	}
+}
+
+function toggleLayoutContainer(show:boolean) {
+	const mainElm = document.querySelector('main');
+			
+	if (!mainElm) {
+		return;
+	}
+
+	if (show) {
+		mainElm.removeAttribute('hidden');
+	} else {
+		mainElm.setAttribute('hidden','true');
+	}
+}
 
 function initMainWindow() {
 	document.body.setAttribute('data-main-window','true');
@@ -99,9 +151,12 @@ function setWindowTitle(newTitle:string) {
 	titleElm && (titleElm.innerHTML = newTitle);
 }
 
+// Sadly, the only way I could find what is the main window is by checking its position on the screen
 async function getIsMainWindow() {
 	const snapshot = await fin.Platform.getCurrentSync().getSnapshot();
-	return (snapshot.windows.length===1)
+	const { top, left } = await fin.Window.getCurrentSync().getBounds();
+
+	return (top === snapshot.windows[0].y &&left === snapshot.windows[0].x);
 }
 
 async function closeWindow() {
